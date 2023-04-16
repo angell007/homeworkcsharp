@@ -102,9 +102,10 @@ namespace homeworkcsharp.Repository
             {
                 connection.Open();
 
-                MySqlCommand comando = new MySqlCommand("SELECT COUNT(*) FROM users WHERE datetime = @datetime AND hour = @hour", connection);
+                MySqlCommand comando = new MySqlCommand("SELECT COUNT(*) FROM users WHERE datetime = @datetime AND hour = @hour AND doctor = @doctor", connection);
                 comando.Parameters.AddWithValue("@datetime", user.DateTime);
                 comando.Parameters.AddWithValue("@hour", user.Hour);
+                comando.Parameters.AddWithValue("@doctor", user.Doctor) ;
 
                 int cantidad = Convert.ToInt32(comando.ExecuteScalar());
                 existe = (cantidad > 0);
